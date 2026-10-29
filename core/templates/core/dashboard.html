@@ -1,0 +1,28 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard | RideDesk</title>
+  <link rel="stylesheet" href="{% static 'core/styles.css' %}">
+</head>
+<body>
+  <main class="dashboard-shell">
+    <nav class="dashboard-nav">
+      <a class="brand dark-brand" href="{% url 'core:dashboard' %}"><span class="brand-mark">R</span> RideDesk</a>
+      <form method="post" action="{% url 'core:logout' %}">{% csrf_token %}<button class="signout" type="submit">Sign out</button></form>
+    </nav>
+    <section class="dashboard-content">
+      <p class="eyebrow accent">STAFF DASHBOARD</p>
+      <h1>Welcome, {{ request.user.get_username }}.</h1>
+      <p>You are signed in to RideDesk.</p>
+      <div class="empty-card">
+        <span class="empty-icon" aria-hidden="true">R</span>
+        <h2>Booking management</h2>
+        <p>This area is ready for the next project tasks.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

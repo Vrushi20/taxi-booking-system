@@ -1,0 +1,44 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Staff sign in | RideDesk</title>
+  <link rel="stylesheet" href="{% static 'core/styles.css' %}">
+</head>
+<body>
+  <main class="login-layout">
+    <section class="welcome-panel" aria-label="RideDesk staff portal">
+      <a class="brand" href="/" aria-label="RideDesk home"><span class="brand-mark">R</span> RideDesk</a>
+      <div class="welcome-copy">
+        <p class="eyebrow">TAXI BOOKING SYSTEM</p>
+        <h1>RideDesk<br>staff login</h1>
+        <p>Use your staff account to manage the service.</p>
+      </div>
+      <p class="panel-foot">Taxi Booking System · Administration</p>
+    </section>
+    <section class="form-panel">
+      <div class="login-card">
+        <p class="eyebrow accent">STAFF ACCESS</p>
+        <h2>Sign in</h2>
+        <p class="intro">Enter your username and password.</p>
+        {% if form.errors %}
+          <div class="error-box" role="alert">Sign in failed. Check your details and make sure your account has staff access.</div>
+        {% endif %}
+        <form method="post" novalidate>
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{ next }}">
+          <label for="id_username">Username</label>
+          <input id="id_username" name="username" type="text" autocomplete="username" placeholder="Username" required autofocus>
+          <label for="id_password">Password</label>
+          <input id="id_password" name="password" type="password" autocomplete="current-password" placeholder="Password" required>
+          <button type="submit">Sign in</button>
+        </form>
+        <p class="no-account">Only authorized staff can sign in.</p>
+      </div>
+      <footer>RideDesk · Taxi Booking System</footer>
+    </section>
+  </main>
+</body>
+</html>

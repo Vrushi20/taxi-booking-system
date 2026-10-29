@@ -1,0 +1,59 @@
+:root {
+  --navy: #182c45;
+  --navy-light: #253e5d;
+  --amber: #e7a93b;
+  --ink: #202b38;
+  --muted: #697687;
+  --line: #dfe4e9;
+  --page: #f4f6f8;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--ink); font-family: Arial, Helvetica, sans-serif; background: var(--page); }
+a { color: inherit; }
+.login-layout { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
+.welcome-panel { background: var(--navy); color: white; padding: 42px clamp(32px, 7vw, 112px); display: flex; flex-direction: column; justify-content: space-between; }
+.brand { display: flex; align-items: center; gap: 11px; color: inherit; text-decoration: none; font-size: 20px; font-weight: 700; }
+.brand-mark { display: grid; place-items: center; width: 35px; height: 35px; border-radius: 7px; background: var(--amber); color: var(--navy); font-weight: 700; }
+.welcome-copy { margin: 0 0 5vh; }
+.eyebrow { margin: 0 0 18px; color: #c2ccda; font-size: 11px; font-weight: 700; letter-spacing: 1.6px; }
+.welcome-copy h1, .dashboard-content h1 { margin: 0 0 18px; font-size: clamp(38px, 5vw, 58px); line-height: 1.08; letter-spacing: -1.5px; }
+.welcome-copy > p:last-child { color: #d0d8e2; font-size: 16px; line-height: 1.5; }
+.panel-foot { margin: 0; color: #c2ccda; font-size: 13px; }
+.form-panel { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 48px 28px 64px; position: relative; }
+.login-card { width: min(100%, 390px); }
+.accent { color: var(--navy-light); margin-bottom: 14px; }
+.login-card h2 { margin: 0 0 8px; font-size: 32px; letter-spacing: -.7px; }
+.intro { margin: 0 0 30px; color: var(--muted); font-size: 15px; }
+form label { display: block; margin: 0 0 8px; font-size: 13px; font-weight: 700; }
+form input { width: 100%; height: 47px; margin-bottom: 20px; padding: 0 13px; border: 1px solid #cfd6de; border-radius: 5px; background: white; font: 14px Arial, Helvetica, sans-serif; outline: none; }
+form input:focus { border-color: var(--navy-light); box-shadow: 0 0 0 3px #253e5d1a; }
+form input::placeholder { color: #8994a1; }
+.login-card button { width: 100%; height: 47px; margin-top: 3px; border: 0; border-radius: 5px; background: var(--navy); color: white; font-size: 15px; font-weight: 700; cursor: pointer; }
+.login-card button:hover { background: var(--navy-light); }
+.no-account { margin-top: 20px; color: var(--muted); text-align: center; font-size: 13px; }
+.error-box { margin-bottom: 18px; padding: 12px; border: 1px solid #e4b8b2; border-radius: 5px; background: #fff1ef; color: #8d3029; font-size: 13px; line-height: 1.45; }
+.form-panel footer { position: absolute; bottom: 24px; color: #7c8794; font-size: 12px; }
+.dashboard-shell { min-height: 100vh; background: var(--page); }
+.dashboard-nav { height: 76px; padding: 0 clamp(24px, 7vw, 110px); border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; background: white; }
+.dark-brand { color: var(--navy); }
+.dashboard-nav form { margin: 0; }
+.signout { padding: 10px 16px; border: 1px solid var(--line); border-radius: 5px; background: white; color: var(--ink); font-weight: 700; cursor: pointer; }
+.signout:hover { background: var(--page); }
+.dashboard-content { max-width: 950px; margin: 78px auto; padding: 0 28px; }
+.dashboard-content h1 { color: var(--navy); font-size: 40px; }
+.dashboard-content > p:not(.eyebrow) { color: var(--muted); }
+.empty-card { margin-top: 42px; padding: 30px; border: 1px solid var(--line); border-radius: 8px; background: white; }
+.empty-card h2 { margin: 17px 0 8px; color: var(--navy); font-size: 21px; }
+.empty-card p { margin: 0; color: var(--muted); }
+.empty-icon { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 6px; background: #fff3db; color: #85570c; font-weight: 700; }
+@media (max-width: 760px) {
+  .login-layout { grid-template-columns: 1fr; }
+  .welcome-panel { min-height: 270px; padding: 28px 26px; }
+  .welcome-copy { margin: 48px 0 0; }
+  .welcome-copy h1 { font-size: 40px; }
+  .panel-foot { display: none; }
+  .form-panel { min-height: 500px; padding: 55px 26px 70px; }
+  .form-panel footer { bottom: 20px; }
+  .dashboard-content { margin: 52px auto; }
+}
