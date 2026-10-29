@@ -1,6 +1,6 @@
 # RideDesk - Taxi Booking System
 
-A Django project built in daily tasks. Day 1 sets up the Django project, SQLite database, `core` app, and a staff login page. There is no public registration page.
+A Django project built in daily tasks. It uses SQLite, a `core` app, Django authentication for staff login/logout, a dashboard, and a manual admin registration page.
 
 ## Requirements
 
@@ -28,19 +28,22 @@ A Django project built in daily tasks. Day 1 sets up the Django project, SQLite 
    python manage.py migrate
    ```
 
-4. Create a staff account and start the site:
+   When new model fields are added in later tasks, create and apply migrations with `python manage.py makemigrations` and `python manage.py migrate`.
+
+4. Start the site:
 
    ```powershell
-   python manage.py createsuperuser
    python manage.py runserver
    ```
 
-5. Open `http://127.0.0.1:8000/` and sign in. The staff dashboard is at `/dashboard/`. Django's built-in admin is at `/django-admin/`.
+5. Open `http://127.0.0.1:8000/register/` to create an admin account. Registration stores profile details in the custom `AdminProfile` table and uses Django's built-in user model for authentication and password hashing. The login page is at `/`; the staff dashboard is at `/dashboard/`. Django's built-in admin is at `/django-admin/`.
 
 ## Main files
 
 - `config/settings.py` contains the project configuration and SQLite database setting.
-- `core/views.py` handles staff sign-in, the protected dashboard, and sign-out.
+- `core/views.py` handles staff sign-in, registration, the protected dashboard, and sign-out.
+- `core/models.py` defines the custom administrator profile table linked to Django's user account.
+- `core/forms.py` validates registration and uses Django's password validation.
 - `core/templates/core/` contains the login and dashboard pages.
 - `core/static/core/styles.css` contains the page styling.
 

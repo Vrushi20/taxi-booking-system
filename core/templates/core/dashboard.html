@@ -15,7 +15,7 @@
     </nav>
     <section class="dashboard-content">
       <p class="eyebrow accent">STAFF DASHBOARD</p>
-      <h1>Welcome, {{ request.user.get_username }}.</h1>
+      <h1>Welcome, {% if admin_profile %}{{ admin_profile.full_name }}{% else %}{{ request.user.get_username }}{% endif %}.</h1>
       <p>You are signed in to RideDesk.</p>
       <div class="empty-card">
         <span class="empty-icon" aria-hidden="true">R</span>

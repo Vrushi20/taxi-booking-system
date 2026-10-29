@@ -35,7 +35,7 @@
           <input id="id_password" name="password" type="password" autocomplete="current-password" placeholder="Password" required>
           <button type="submit">Sign in</button>
         </form>
-        <p class="no-account">Only authorized staff can sign in.</p>
+        <p class="no-account">Need an admin account? <a href="{% url 'core:admin_register' %}">Register here</a></p>
       </div>
       <footer>RideDesk · Taxi Booking System</footer>
     </section>

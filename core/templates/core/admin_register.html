@@ -1,0 +1,48 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin registration | RideDesk</title>
+  <link rel="stylesheet" href="{% static 'core/styles.css' %}">
+</head>
+<body>
+  <main class="register-layout">
+    <section class="register-card">
+      <a class="brand dark-brand" href="{% url 'core:admin_login' %}"><span class="brand-mark">R</span> RideDesk</a>
+      <p class="eyebrow accent register-eyebrow">ADMIN ACCOUNT</p>
+      <h1>Create an admin account</h1>
+      <p class="intro">Enter your details to register for the staff dashboard.</p>
+
+      <form method="post" novalidate>
+        {% csrf_token %}
+        {% if form.non_field_errors %}<div class="error-box" role="alert">{{ form.non_field_errors }}</div>{% endif %}
+
+        <label for="{{ form.full_name.id_for_label }}">Full name</label>
+        {{ form.full_name }}
+        {% for error in form.full_name.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+
+        <label for="{{ form.email.id_for_label }}">Email address</label>
+        {{ form.email }}
+        {% for error in form.email.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+
+        <label for="{{ form.username.id_for_label }}">Username</label>
+        {{ form.username }}
+        {% for error in form.username.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+
+        <label for="{{ form.password1.id_for_label }}">Password</label>
+        {{ form.password1 }}
+        {% for error in form.password1.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+
+        <label for="{{ form.password2.id_for_label }}">Confirm password</label>
+        {{ form.password2 }}
+        {% for error in form.password2.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+
+        <button type="submit">Create account</button>
+      </form>
+      <p class="no-account">Already registered? <a href="{% url 'core:admin_login' %}">Sign in</a></p>
+    </section>
+  </main>
+</body>
+</html>
