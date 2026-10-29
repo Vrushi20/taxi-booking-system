@@ -1,8 +1,14 @@
 from django.contrib import admin
-from .models import AdminProfile
+from .models import AdminProfile, PasswordResetOTP
 
 
 @admin.register(AdminProfile)
 class AdminProfileAdmin(admin.ModelAdmin):
     list_display = ("full_name", "email", "user", "created_at")
     search_fields = ("full_name", "email", "user__username")
+
+
+@admin.register(PasswordResetOTP)
+class PasswordResetOTPAdmin(admin.ModelAdmin):
+    list_display = ("user", "created_at", "expires_at", "attempts")
+    readonly_fields = ("otp_hash",)

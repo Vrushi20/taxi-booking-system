@@ -44,6 +44,9 @@ form input::placeholder { color: #8994a1; }
 .register-card form button { width: 100%; height: 47px; margin-top: 3px; border: 0; border-radius: 5px; background: var(--navy); color: white; font-size: 15px; font-weight: 700; cursor: pointer; }
 .register-card form button:hover { background: var(--navy-light); }
 .field-error { margin: -14px 0 16px; color: #8d3029; font-size: 12px; }
+.success-box { margin: 0 0 18px; padding: 12px; border: 1px solid #c6ddcb; border-radius: 5px; background: #eff8f1; color: #245f35; font-size: 13px; line-height: 1.45; }
+.button-link { display: inline-block; padding: 13px 18px; border-radius: 5px; background: var(--navy); color: white; text-decoration: none; font-size: 14px; font-weight: 700; }
+.button-link:hover { background: var(--navy-light); }
 .register-card .no-account { margin-bottom: 0; }
 .form-panel footer { position: absolute; bottom: 24px; color: #7c8794; font-size: 12px; }
 .dashboard-shell { min-height: 100vh; background: var(--page); }

@@ -1,6 +1,6 @@
 # RideDesk - Taxi Booking System
 
-A Django project built in daily tasks. It uses SQLite, a `core` app, Django authentication for staff login/logout, a dashboard, and a manual admin registration page.
+A Django project built in daily tasks. It uses SQLite, a `core` app, Django authentication for staff login/logout, a dashboard, a manual admin registration page, and a console-based email password-reset flow.
 
 ## Requirements
 
@@ -36,7 +36,11 @@ A Django project built in daily tasks. It uses SQLite, a `core` app, Django auth
    python manage.py runserver
    ```
 
-5. Open `http://127.0.0.1:8000/register/` to create an admin account. Registration stores profile details in the custom `AdminProfile` table and uses Django's built-in user model for authentication and password hashing. The login page is at `/`; the staff dashboard is at `/dashboard/`. Django's built-in admin is at `/django-admin/`.
+5. Open `http://127.0.0.1:8000/register/` to create an admin account. Registration stores profile details in the custom `AdminProfile` table and uses Django's built-in user model for authentication and password hashing. The login page is at `/`; the staff dashboard is at `/dashboard/`; password recovery starts at `/forgot-password/`. Django's built-in admin is at `/django-admin/`.
+
+## Password reset in development
+
+The email backend is configured to print emails in the terminal running `runserver`. Request a reset at `/forgot-password/`, copy the six-digit code from the terminal, then enter it with the account email and a new password at `/reset-password/`. Codes expire after 10 minutes and are limited to five attempts. The code is stored as a hash in SQLite and removed after a successful reset.
 
 ## Main files
 
