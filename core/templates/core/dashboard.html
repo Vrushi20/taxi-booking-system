@@ -5,14 +5,38 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dashboard | RideDesk</title>
-  <link rel="stylesheet" href="{% static 'core/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'core/styles.css' %}?v=day4-dropdown">
+  <script src="{% static 'core/dashboard.js' %}?v=day4-dropdown" defer></script>
 </head>
 <body>
   <main class="dashboard-shell">
-    <nav class="dashboard-nav">
-      <a class="brand dark-brand" href="{% url 'core:dashboard' %}"><span class="brand-mark">R</span> RideDesk</a>
-      <form method="post" action="{% url 'core:logout' %}">{% csrf_token %}<button class="signout" type="submit">Sign out</button></form>
-    </nav>
+    <header class="dashboard-nav">
+      <span class="brand dark-brand"><span class="brand-mark">R</span> RideDesk</span>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="dashboard-menu">
+        <span>Menu</span><span class="menu-icon" aria-hidden="true">☰</span>
+      </button>
+      <nav class="dashboard-menu" id="dashboard-menu" aria-label="Dashboard options">
+        <button class="nav-option" type="button" disabled aria-disabled="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"></circle><path d="M5 20c.5-3.5 3.2-5.5 7-5.5s6.5 2 7 5.5"></path></svg>
+          <span>Drivers</span>
+        </button>
+        <button class="nav-option" type="button" disabled aria-disabled="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"></circle><path d="M3.5 19c.4-3 2.3-4.7 5.5-4.7 1.5 0 2.7.4 3.7 1.1M16 5.5a3 3 0 0 1 0 5.8M15 14.5c3.2 0 5.1 1.7 5.5 4.5"></path></svg>
+          <span>Users</span>
+        </button>
+        <button class="nav-option" type="button" disabled aria-disabled="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4.5" width="14" height="16" rx="2"></rect><path d="M9 4.5v-1h6v1M9 10h6M9 14h6M9 17h3"></path></svg>
+          <span>Bookings</span>
+        </button>
+        <form method="post" action="{% url 'core:logout' %}">
+          {% csrf_token %}
+          <button class="nav-logout" type="submit">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5H5v14h5M14 8l4 4-4 4M8 12h10"></path></svg>
+            <span>Logout</span>
+          </button>
+        </form>
+      </nav>
+    </header>
     <section class="dashboard-content">
       <p class="eyebrow accent">STAFF DASHBOARD</p>
       <h1>Welcome, {% if admin_profile %}{{ admin_profile.full_name }}{% else %}{{ request.user.get_username }}{% endif %}.</h1>
